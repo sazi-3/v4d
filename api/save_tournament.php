@@ -12,7 +12,7 @@ $description = $_POST['description'] ?? ''; // trusted admin HTML from Quill
 
 if (!$name) {
     $_SESSION['flash'] = ['type'=>'error','msg'=>'Tournament name is required.'];
-    redirect('/admin/tournaments.php?action=' . ($id ? 'edit&id='.$id : 'add'));
+    redirect('../admin/tournaments.php?action=' . ($id ? 'edit&id='.$id : 'add'));
 }
 
 // Handle banner upload

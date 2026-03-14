@@ -145,8 +145,8 @@ else: ?>
 
         <div class="form-row">
           <div class="form-group">
-            <label class="form-label" for="password">Password *</label>
-            <input type="password" id="password" name="password" class="form-control" required
+            <label class="form-label" for="password">Password <?= !$edit_player ? '*' : '' ?></label>
+            <input type="password" id="password" name="password" class="form-control" <?= !$edit_player ? 'required' : '' ?>
               placeholder="<?= $edit_player ? 'Leave blank to keep existing' : 'Enter password'?>">
           </div>
           <div class="form-group">

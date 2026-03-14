@@ -20,17 +20,17 @@ $total_games  = max(0, (int)($_POST['total_games'] ?? 0));
 
 if (!$name) {
     $_SESSION['flash'] = ['type'=>'error','msg'=>'Player name is required.'];
-    redirect('/admin/players.php?action=' . ($id ? 'edit&id=' . $id : 'add'));
+    redirect('../admin/players.php?action=' . ($id ? 'edit&id=' . $id : 'add'));
 }
 
 if (!$username) {
     $_SESSION['flash'] = ['type'=>'error','msg'=>'Username is required.'];
-    redirect('/admin/players.php?action=' . ($id ? 'edit&id=' . $id : 'add'));
+    redirect('../admin/players.php?action=' . ($id ? 'edit&id=' . $id : 'add'));
 }
 
-if (!$password) {
-    $_SESSION['flash'] = ['type'=>'error','msg'=>'Password is required.'];
-    redirect('/admin/players.php?action=' . ($id ? 'edit&id=' . $id : 'add'));
+if (!$id && !$password) {
+    $_SESSION['flash'] = ['type'=>'error','msg'=>'Password is required for new players.'];
+    redirect('../admin/players.php?action=add');
 }
 
 if ($username) {
@@ -38,7 +38,7 @@ if ($username) {
     $u_check->execute([$username, $id]);
     if ($u_check->fetch()) {
         $_SESSION['flash'] = ['type'=>'error','msg'=>'Username is already taken.'];
-        redirect('/admin/players.php?action=' . ($id ? 'edit&id=' . $id : 'add'));
+        redirect('../admin/players.php?action=' . ($id ? 'edit&id=' . $id : 'add'));
     }
 }
 

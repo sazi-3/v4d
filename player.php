@@ -1,6 +1,6 @@
 <?php
-require_once __DIR__ . '/includes/db.php';
-require_once __DIR__ . '/includes/functions.php';
+require_once __DIR__ . '/adding/db.php';
+require_once __DIR__ . '/adding/functions.php';
 
 $id = isset($_GET['id']) ? (int)$_GET['id'] : 0;
 if (!$id) { header('Location: /leaderboard.php'); exit; }
@@ -33,7 +33,7 @@ $t_list = $t_list->fetchAll();
 $page_title = $player['name'];
 $extra_css  = ['player.css'];
 
-include __DIR__ . '/includes/header.php';
+include __DIR__ . '/adding/header.php';
 ?>
 
 <!-- Player Profile Header -->
@@ -169,4 +169,4 @@ include __DIR__ . '/includes/header.php';
   </div>
 </main>
 
-<?php include __DIR__ . '/includes/footer.php'; ?>
+<?php include __DIR__ . '/adding/footer.php'; ?>

@@ -1,6 +1,6 @@
 <?php
-require_once __DIR__ . '/../includes/db.php';
-require_once __DIR__ . '/../includes/functions.php';
+require_once __DIR__ . '/../adding/db.php';
+require_once __DIR__ . '/../adding/functions.php';
 session_start();
 
 header('Content-Type: application/json');

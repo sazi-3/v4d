@@ -1,6 +1,6 @@
 <?php
-require_once __DIR__ . '/includes/db.php';
-require_once __DIR__ . '/includes/functions.php';
+require_once __DIR__ . '/adding/db.php';
+require_once __DIR__ . '/adding/functions.php';
 session_start();
 
 require_player();
@@ -17,7 +17,7 @@ if (!$player) {
 $page_title = 'Edit Profile';
 $extra_css  = ['profile_edit.css'];
 
-include __DIR__ . '/includes/header.php';
+include __DIR__ . '/adding/header.php';
 ?>
 
 <div class="container" style="padding-top: 40px;">
@@ -206,5 +206,5 @@ document.addEventListener('DOMContentLoaded', () => {
 </script>
 <?php 
 $footer_scripts = ob_get_clean();
-include __DIR__ . '/includes/footer.php'; 
+include __DIR__ . '/adding/footer.php'; 
 ?>

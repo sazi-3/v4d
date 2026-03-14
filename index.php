@@ -1,6 +1,6 @@
 <?php
-require_once __DIR__ . '/includes/db.php';
-require_once __DIR__ . '/includes/functions.php';
+require_once __DIR__ . '/adding/db.php';
+require_once __DIR__ . '/adding/functions.php';
 
 $page_title = 'Home';
 $extra_css = ['home.css'];
@@ -10,7 +10,7 @@ $top3 = $pdo->query("SELECT * FROM players ORDER BY total_wins DESC, total_games
 $total_players = $pdo->query("SELECT COUNT(*) FROM players")->fetchColumn();
 $total_tournaments = $pdo->query("SELECT COUNT(*) FROM tournaments")->fetchColumn();
 
-include __DIR__ . '/includes/header.php';
+include __DIR__ . '/adding/header.php';
 ?>
 
 <!-- ============================================================
@@ -139,4 +139,4 @@ $total_wins = $pdo->query("SELECT COALESCE(SUM(total_wins),0) FROM players")->fe
 <?php
 endif; ?>
 
-<?php include __DIR__ . '/includes/footer.php'; ?>
+<?php include __DIR__ . '/adding/footer.php'; ?>

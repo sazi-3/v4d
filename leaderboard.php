@@ -1,6 +1,6 @@
 <?php
-require_once __DIR__ . '/includes/db.php';
-require_once __DIR__ . '/includes/functions.php';
+require_once __DIR__ . '/adding/db.php';
+require_once __DIR__ . '/adding/functions.php';
 
 $page_title = 'Leaderboard';
 $extra_css   = ['leaderboard.css'];
@@ -12,7 +12,7 @@ $players = $pdo->query(
      ORDER BY total_wins DESC, total_games ASC"
 )->fetchAll();
 
-include __DIR__ . '/includes/header.php';
+include __DIR__ . '/adding/header.php';
 ?>
 
 <section class="page-header">
@@ -197,7 +197,7 @@ include __DIR__ . '/includes/header.php';
   </div>
 </main>
 
-<?php include __DIR__ . '/includes/footer.php'; ?>
+<?php include __DIR__ . '/adding/footer.php'; ?>
 
 <script>
 (function () {

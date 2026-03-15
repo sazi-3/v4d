@@ -54,3 +54,20 @@ if (flashMsg) {
     setTimeout(() => flashMsg.remove(), 500);
   }, 4000);
 }
+
+// Admin sidebar toggle
+const adminToggle = document.getElementById('admin-mobile-toggle');
+const adminSidebar = document.getElementById('admin-sidebar');
+const adminOverlay = document.getElementById('admin-sidebar-overlay');
+
+if (adminToggle && adminSidebar && adminOverlay) {
+  adminToggle.addEventListener('click', () => {
+    adminSidebar.classList.toggle('open');
+    adminOverlay.classList.toggle('show');
+  });
+
+  adminOverlay.addEventListener('click', () => {
+    adminSidebar.classList.remove('open');
+    adminOverlay.classList.remove('show');
+  });
+}

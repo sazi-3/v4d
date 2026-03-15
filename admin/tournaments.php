@@ -68,7 +68,7 @@ if ($action === 'edit' && $edit_id) {
       <?php if (empty($tournaments)): ?>
         <div class="empty-state"><div class="empty-icon">🏆</div><p>No tournaments yet. <a href="?action=add" class="text-primary">Add one!</a></p></div>
       <?php else: ?>
-      <table class="admin-table">
+      <table class="admin-table table-tournaments">
         <thead>
           <tr>
             <th>Banner</th>

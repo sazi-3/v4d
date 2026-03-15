@@ -69,7 +69,7 @@ endif; ?>
         </div>
         <?php
   else: ?>
-        <table class="admin-table">
+        <table class="admin-table table-players">
           <thead>
             <tr>
               <th>Player</th>

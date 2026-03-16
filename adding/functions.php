@@ -76,7 +76,7 @@ function base_url(string $path = ''): string {
  */
 function upload_url(?string $path): string {
     if (!$path) return '';
-    return base_url('view_asset.php?file=' . urlencode($path));
+    return base_url('uploads/' . $path);
 }
 
 function redirect(string $url): never {

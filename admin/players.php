@@ -165,7 +165,10 @@ else: ?>
     'creepster' => 'Creepster (Horror)',
     'bangers' => 'Bangers (Comic)',
     'handwritten' => 'Shadows (Casual)',
-    'gothic' => 'Gothic (Medieval)'
+    'gothic' => 'Gothic (Medieval)',
+    'lobster' => 'Lobster (Fancy)',
+    'titillium' => 'Titillium (Tech)',
+    'righteous' => 'Righteous (Modern)'
   ];
   $cur = $edit_player['font_style'] ?? 'modern';
   foreach ($fonts as $key => $label): ?>

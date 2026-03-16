@@ -126,6 +126,9 @@ include __DIR__ . '/adding/header.php';
               <option value="bangers" <?= $player['font_style'] === 'bangers' ? 'selected' : '' ?>>Bangers (Comic)</option>
               <option value="handwritten" <?= $player['font_style'] === 'handwritten' ? 'selected' : '' ?>>Shadows (Casual)</option>
               <option value="gothic" <?= $player['font_style'] === 'gothic' ? 'selected' : '' ?>>Gothic (Medieval)</option>
+              <option value="lobster" <?= $player['font_style'] === 'lobster' ? 'selected' : '' ?>>Lobster (Fancy)</option>
+              <option value="titillium" <?= $player['font_style'] === 'titillium' ? 'selected' : '' ?>>Titillium (Tech)</option>
+              <option value="righteous" <?= $player['font_style'] === 'righteous' ? 'selected' : '' ?>>Righteous (Modern)</option>
             </select>
           </div>
         </div>
@@ -176,7 +179,10 @@ document.addEventListener('DOMContentLoaded', () => {
         'creepster': 'font-creepster',
         'bangers': 'font-bangers',
         'handwritten': 'font-handwritten',
-        'gothic': 'font-gothic'
+        'gothic': 'font-gothic',
+        'lobster': 'font-lobster',
+        'titillium': 'font-titillium',
+        'righteous': 'font-righteous'
     };
     previewText.classList.add(map[fontStyleInput.value] || 'font-modern');
   };

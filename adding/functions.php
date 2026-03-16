@@ -18,6 +18,9 @@ function font_class(string $style): string {
         'bangers'   => 'font-bangers',
         'handwritten' => 'font-handwritten',
         'gothic'    => 'font-gothic',
+        'lobster'   => 'font-lobster',
+        'titillium' => 'font-titillium',
+        'righteous' => 'font-righteous',
     ];
     return $map[$style] ?? 'font-modern';
 }

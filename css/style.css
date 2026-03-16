@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Orbitron:wght@400;700;900&family=Press+Start+2P&family=Rajdhani:wght@400;600;700&family=Satisfy&family=Bebas+Neue&family=Cinzel:wght@400;700&family=Permanent+Marker&family=Russo+One&family=Creepster&family=Bangers&family=Shadows+Into+Light&family=UnifrakturMaguntia&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Orbitron:wght@400;700;900&family=Press+Start+2P&family=Rajdhani:wght@400;600;700&family=Satisfy&family=Bebas+Neue&family=Cinzel:wght@400;700&family=Permanent+Marker&family=Russo+One&family=Creepster&family=Bangers&family=Shadows+Into+Light&family=UnifrakturMaguntia&family=Lobster&family=Titillium+Web:wght@400;700&family=Righteous&display=swap');
 
 /* =====================================================
    CSS Design Tokens
@@ -28,6 +28,9 @@
   --font-bangers:    'Bangers', cursive;
   --font-handwritten: 'Shadows Into Light', cursive;
   --font-gothic:     'UnifrakturMaguntia', cursive;
+  --font-lobster:    'Lobster', cursive;
+  --font-titillium:  'Titillium Web', sans-serif;
+  --font-righteous:  'Righteous', cursive;
 
   --radius:     12px;
   --radius-lg:  20px;
@@ -76,6 +79,9 @@ h1, h2, h3, h4, h5, h6 {
 .font-bangers   { font-family: var(--font-bangers) !important; letter-spacing: 1px; }
 .font-handwritten { font-family: var(--font-handwritten) !important; }
 .font-gothic    { font-family: var(--font-gothic) !important; font-size: 1.2em; }
+.font-lobster   { font-family: var(--font-lobster) !important; }
+.font-titillium { font-family: var(--font-titillium) !important; font-weight: 700; }
+.font-righteous { font-family: var(--font-righteous) !important; }
 
 /* =====================================================
    Layout

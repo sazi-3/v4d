@@ -43,11 +43,14 @@ function updatePreview() {
     bangers:   'font-bangers',
     handwritten: 'font-handwritten',
     gothic:    'font-gothic',
+    lobster:   'font-lobster',
+    titillium: 'font-titillium',
+    righteous: 'font-righteous',
   };
 
   if (nameEl && font) {
     nameEl.className = nameEl.className
-      .replace(/font-(techy|pixelated|modern|aesthetic|bebas|cinzel|marker|russo|creepster|bangers|handwritten|gothic)/g, '')
+      .replace(/font-(techy|pixelated|modern|aesthetic|bebas|cinzel|marker|russo|creepster|bangers|handwritten|gothic|lobster|titillium|righteous)/g, '')
       .trimEnd();
     const cls = fontMap[font.value];
     if (cls) nameEl.classList.add(cls, 'player-card-name');

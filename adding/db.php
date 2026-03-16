@@ -4,7 +4,7 @@ $is_local = in_array($host_no_port, ['localhost', '127.0.0.1']);
 
 if ($is_local) {
     define('DB_HOST', 'localhost');
-    define('DB_NAME', 'v4d');
+    define('DB_NAME', 'v4d2');
     define('DB_USER', 'root');
     define('DB_PASS', '');
 }
@@ -37,6 +37,13 @@ try {
 
     try {
         $pdo->exec("ALTER TABLE players ADD COLUMN password_hash VARCHAR(255) DEFAULT NULL");
+    }
+    catch (PDOException $e) {
+    }
+
+    // Convert font_style from ENUM to VARCHAR to allow more styles
+    try {
+        $pdo->exec("ALTER TABLE players MODIFY COLUMN font_style VARCHAR(50) DEFAULT 'modern'");
     }
     catch (PDOException $e) {
     }

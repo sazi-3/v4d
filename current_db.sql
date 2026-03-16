@@ -39,7 +39,7 @@ CREATE TABLE `admin_users` (
 --
 
 INSERT INTO `admin_users` (`id`, `username`, `password_hash`, `created_at`) VALUES
-(1, 'admin', '$2y$10$w2CEPShavDbxmpLEtyMKLuXMMkvz8hgos4brZi07oOGLM1I0SUAWu', '2026-03-09 06:50:59');
+(1, 'admin', '$2y$12$UcInrhx556y/FBwXq0pu.O5dJzARv8X5wNHD/UucTe2D/Wh0eXH4S', '2026-03-09 06:50:59');
 
 -- --------------------------------------------------------
 
@@ -64,17 +64,6 @@ CREATE TABLE `players` (
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
---
--- Dumping data for table `players`
---
-
-INSERT INTO `players` (`id`, `name`, `username`, `password_hash`, `bio`, `font_style`, `card_color`, `text_color`, `border_color`, `profile_pic`, `cover_image`, `total_wins`, `total_games`, `created_at`) VALUES
-(1, 'sazi', 'sazi', '$2y$10$w2CEPShavDbxmpLEtyMKLuXMMkvz8hgos4brZi07oOGLM1I0SUAWu', 'The Owner', 'pixelated', '#00032e', '#5778ff', '#001e94', '69ae72b7365104.02133691.jpg', '69ae72b736bbe0.66257690.png', 69, 70, '2026-03-09 07:11:51'),
-(2, 'yousuf', 'yousuf', '$2y$10$w2CEPShavDbxmpLEtyMKLuXMMkvz8hgos4brZi07oOGLM1I0SUAWu', 'i am yousuf the youfus', 'aesthetic', '#7e0101', '#ffffff', '#f5a623', '69ae76477ca311.60970659.gif', '69ae76477cd1d0.74597791.jpg', 40, 75, '2026-03-09 07:27:03'),
-(3, 'theMaze', 'theMaze', '$2y$10$w2CEPShavDbxmpLEtyMKLuXMMkvz8hgos4brZi07oOGLM1I0SUAWu', 'maze the caze', 'modern', '#ff85fb', '#000000', '#ff00c8', '69ae785163b779.16460814.jpeg', '69ae785163e9a0.03768608.jpeg', 43, 60, '2026-03-09 07:35:45'),
-(4, 'lasthope', 'lasthope', '$2y$10$w2CEPShavDbxmpLEtyMKLuXMMkvz8hgos4brZi07oOGLM1I0SUAWu', 'win is all i know, i care nobody', 'techy', '#002e01', '#ff05f7', '#01f46a', '69ae7b37b15b72.50413347.jpg', '69ae7b37b16ca7.74394652.jpg', 44, 74, '2026-03-09 07:48:07');
-
--- --------------------------------------------------------
 
 --
 -- Table structure for table `tournaments`

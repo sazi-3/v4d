@@ -70,6 +70,15 @@ function base_url(string $path = ''): string {
     return $protocol . $host . $base_path . '/' . ltrim($path, '/');
 }
 
+/**
+ * Generates a secure URL for an uploaded asset (profiles, banners, etc.)
+ * Usage: <?= upload_url('profiles/' . $player['profile_pic']) ?>
+ */
+function upload_url(?string $path): string {
+    if (!$path) return '';
+    return base_url('view_asset.php?file=' . urlencode($path));
+}
+
 function redirect(string $url): never {
     header('Location: ' . $url);
     exit;

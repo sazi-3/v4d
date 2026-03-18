@@ -15,11 +15,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $pid = (int)$_POST['update_pid'];
         $dwins = (int)($_POST['dwins'][$pid] ?? 0);
         $twins = (int)($_POST['twins'][$pid] ?? 0);
-        $total_wins = $dwins + $twins;
-        $games = (int)($_POST['games'][$pid] ?? 0);
+        $dplayed = (int)($_POST['dplayed'][$pid] ?? 0);
+        $tplayed = (int)($_POST['tplayed'][$pid] ?? 0);
         
-        $upd = $pdo->prepare("UPDATE players SET duo_wins=?, trio_wins=?, total_wins=?, total_games=? WHERE id=?");
-        $upd->execute([$dwins, $twins, $total_wins, $games, $pid]);
+        $total_wins = $dwins + $twins;
+        $total_games = $dplayed + $tplayed;
+        
+        $upd = $pdo->prepare("UPDATE players SET duo_wins=?, trio_wins=?, duo_played=?, trio_played=?, total_wins=?, total_games=? WHERE id=?");
+        $upd->execute([$dwins, $twins, $dplayed, $tplayed, $total_wins, $total_games, $pid]);
         $_SESSION['flash'] = ['type'=>'success','msg'=>"Player stats updated!"];
     } else {
         // Bulk update
@@ -28,11 +31,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $pid   = (int)$pid;
             $dwins = (int)($_POST['dwins'][$pid] ?? 0);
             $twins = (int)($_POST['twins'][$pid] ?? 0);
+            $dplayed = (int)($_POST['dplayed'][$pid] ?? 0);
+            $tplayed = (int)($_POST['tplayed'][$pid] ?? 0);
+            
             $total_wins = $dwins + $twins;
-            $games = (int)($_POST['games'][$pid] ?? 0);
+            $total_games = $dplayed + $tplayed;
+            
             if ($pid) {
-                $upd = $pdo->prepare("UPDATE players SET duo_wins=?, trio_wins=?, total_wins=?, total_games=? WHERE id=?");
-                $upd->execute([$dwins, $twins, $total_wins, $games, $pid]);
+                $upd = $pdo->prepare("UPDATE players SET duo_wins=?, trio_wins=?, duo_played=?, trio_played=?, total_wins=?, total_games=? WHERE id=?");
+                $upd->execute([$dwins, $twins, $dplayed, $tplayed, $total_wins, $total_games, $pid]);
             }
         }
         $_SESSION['flash'] = ['type'=>'success','msg'=>'All stats updated successfully!'];
@@ -82,11 +89,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <tr>
               <th>#</th>
               <th>Player Name</th>
-              <th>Duo</th>
-              <th>Trio</th>
-              <th>Total</th>
-              <th>Games Played</th>
-              <th>Win Rate</th>
+              <th>Duo Win</th>
+              <th>Duo Played</th>
+              <th>Trio Win</th>
+              <th>Trio Played</th>
+              <th>Total Win</th>
+              <th>Total Games</th>
+              <th>Win %</th>
               <th>Action</th>
             </tr>
           </thead>
@@ -110,14 +119,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                        class="form-control form-control-inline" min="0" style="width: 70px;">
               </td>
               <td>
+                <input type="number" name="dplayed[<?= $p['id'] ?>]" value="<?= $p['duo_played'] ?>"
+                       class="form-control form-control-inline" min="0" style="width: 70px;">
+              </td>
+              <td>
                 <input type="number" name="twins[<?= $p['id'] ?>]" value="<?= $p['trio_wins'] ?>"
                        class="form-control form-control-inline" min="0" style="width: 70px;">
               </td>
-              <td class="text-primary"><?= $p['total_wins'] ?></td>
               <td>
-                <input type="number" name="games[<?= $p['id'] ?>]" value="<?= $p['total_games'] ?>"
-                       class="form-control form-control-inline" min="0" style="width: 80px;">
+                <input type="number" name="tplayed[<?= $p['id'] ?>]" value="<?= $p['trio_played'] ?>"
+                       class="form-control form-control-inline" min="0" style="width: 70px;">
               </td>
+              <td class="text-primary"><?= $p['total_wins'] ?></td>
+              <td class="text-muted"><?= $p['total_games'] ?></td>
               <td class="text-muted"><?= win_rate($p['total_wins'], $p['total_games']) ?></td>
               <td><button type="submit" name="update_pid" value="<?= $p['id'] ?>" class="btn btn-outline btn-sm" style="width: 100%;">Update</button></td>
             </tr>

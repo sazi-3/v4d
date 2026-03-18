@@ -17,8 +17,11 @@ $text_color = trim($_POST['text_color'] ?? '#ffffff');
 $border_color = trim($_POST['border_color'] ?? '#f5a623');
 $duo_wins     = max(0, (int)($_POST['duo_wins']   ?? 0));
 $trio_wins    = max(0, (int)($_POST['trio_wins']  ?? 0));
+$duo_played   = max(0, (int)($_POST['duo_played'] ?? 0));
+$trio_played  = max(0, (int)($_POST['trio_played'] ?? 0));
+
 $total_wins   = $duo_wins + $trio_wins;
-$total_games  = max(0, (int)($_POST['total_games'] ?? 0));
+$total_games  = $duo_played + $trio_played;
 
 if (!$name) {
     $_SESSION['flash'] = ['type'=>'error','msg'=>'Player name is required.'];
@@ -72,27 +75,27 @@ if ($id) {
         $hash = password_hash($password, PASSWORD_DEFAULT);
         $stmt = $pdo->prepare(
             "UPDATE players SET name=?, username=?, password_hash=?, bio=?, font_style=?, card_color=?, text_color=?, border_color=?,
-             profile_pic=?, cover_image=?, duo_wins=?, trio_wins=?, total_wins=?, total_games=? WHERE id=?"
+             profile_pic=?, cover_image=?, duo_wins=?, trio_wins=?, duo_played=?, trio_played=?, total_wins=?, total_games=? WHERE id=?"
         );
         $stmt->execute([$name, $username, $hash, $bio, $font_style, $card_color, $text_color, $border_color,
-                        $profile_pic, $cover_image, $duo_wins, $trio_wins, $total_wins, $total_games, $id]);
+                        $profile_pic, $cover_image, $duo_wins, $trio_wins, $duo_played, $trio_played, $total_wins, $total_games, $id]);
     } else {
         $stmt = $pdo->prepare(
             "UPDATE players SET name=?, username=?, bio=?, font_style=?, card_color=?, text_color=?, border_color=?,
-             profile_pic=?, cover_image=?, duo_wins=?, trio_wins=?, total_wins=?, total_games=? WHERE id=?"
+             profile_pic=?, cover_image=?, duo_wins=?, trio_wins=?, duo_played=?, trio_played=?, total_wins=?, total_games=? WHERE id=?"
         );
         $stmt->execute([$name, $username, $bio, $font_style, $card_color, $text_color, $border_color,
-                        $profile_pic, $cover_image, $duo_wins, $trio_wins, $total_wins, $total_games, $id]);
+                        $profile_pic, $cover_image, $duo_wins, $trio_wins, $duo_played, $trio_played, $total_wins, $total_games, $id]);
     }
     $_SESSION['flash'] = ['type'=>'success','msg'=>"Player \"$name\" updated successfully!"];
 } else {
     $hash = password_hash($password, PASSWORD_DEFAULT);
     $stmt = $pdo->prepare(
         "INSERT INTO players (name, username, password_hash, bio, font_style, card_color, text_color, border_color,
-         profile_pic, cover_image, duo_wins, trio_wins, total_wins, total_games) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)"
+         profile_pic, cover_image, duo_wins, trio_wins, duo_played, trio_played, total_wins, total_games) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)"
     );
     $stmt->execute([$name, $username, $hash, $bio, $font_style, $card_color, $text_color, $border_color,
-                    $profile_pic, $cover_image, $duo_wins, $trio_wins, $total_wins, $total_games]);
+                    $profile_pic, $cover_image, $duo_wins, $trio_wins, $duo_played, $trio_played, $total_wins, $total_games]);
     $_SESSION['flash'] = ['type'=>'success','msg'=>"Player \"$name\" added successfully!"];
 }
 

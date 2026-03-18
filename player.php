@@ -92,8 +92,16 @@ include __DIR__ . '/adding/header.php';
             <strong class="text-primary"><?= $player['duo_wins'] ?></strong>
           </div>
           <div class="profile-stat-row">
+            <span>Duo Played</span>
+            <strong class="text-primary"><?= $player['duo_played'] ?></strong>
+          </div>
+          <div class="profile-stat-row">
             <span>Trio Wins</span>
             <strong class="text-primary"><?= $player['trio_wins'] ?></strong>
+          </div>
+          <div class="profile-stat-row">
+            <span>Trio Played</span>
+            <strong class="text-primary"><?= $player['trio_played'] ?></strong>
           </div>
           <div class="profile-stat-row">
             <span>Total Wins</span>

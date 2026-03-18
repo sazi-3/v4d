@@ -406,10 +406,10 @@
 
 /* Stat strip */
 .lb-mc-stats {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px 4px;
+  margin-top: 4px;
 }
 
 .lb-mc-stat {
@@ -421,23 +421,22 @@
 
 .lb-mc-stat-val {
   font-family: var(--font-techy);
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   font-weight: 700;
   color: var(--color-text);
   line-height: 1;
 }
 
 .lb-mc-stat-lbl {
-  font-size: 0.58rem;
+  font-size: 0.55rem;
   color: var(--color-muted);
   text-transform: uppercase;
-  letter-spacing: 0.8px;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
 }
 
 .lb-mc-sep {
-  color: rgba(255,255,255,0.15);
-  font-size: 0.75rem;
-  align-self: center;
+  display: none;
 }
 
 /* Win-rate bar */

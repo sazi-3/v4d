@@ -72,8 +72,13 @@ endif; ?>
         <table class="admin-table table-players">
           <thead>
             <tr>
+              <th>#</th>
               <th>Player</th>
               <th>Font</th>
+              <th>DW</th>
+              <th>DP</th>
+              <th>TW</th>
+              <th>TP</th>
               <th>Wins</th>
               <th>Games</th>
               <th>Win Rate</th>
@@ -81,8 +86,11 @@ endif; ?>
             </tr>
           </thead>
           <tbody>
-            <?php foreach ($players as $p): ?>
+            <?php foreach ($players as $index => $p): $r = $index + 1; ?>
             <tr>
+              <td>
+                <span class="rank-badge rank-<?= $r <= 3 ? $r : 'other' ?>">#<?= $r ?></span>
+              </td>
               <td class="admin-player-cell">
                 <?php if ($p['profile_pic']): ?>
                 <img src="<?= upload_url("profiles/" . $p['profile_pic']) ?>" class="admin-avatar">
@@ -92,12 +100,16 @@ endif; ?>
                 <?php
       endif; ?>
                 <span class="<?= font_class($p['font_style'])?>">
-                  <?= sanitize($p['name'])?>
+                   <?= sanitize($p['name'])?>
                 </span>
               </td>
               <td><small>
                   <?= ucfirst($p['font_style'])?>
                 </small></td>
+              <td class="text-muted"><small><?= $p['duo_wins']?></small></td>
+              <td class="text-muted"><small><?= $p['duo_played']?></small></td>
+              <td class="text-muted"><small><?= $p['trio_wins']?></small></td>
+              <td class="text-muted"><small><?= $p['trio_played']?></small></td>
               <td class="text-primary">
                 <?= $p['total_wins']?>
               </td>
@@ -213,7 +225,7 @@ else: ?>
         <div class="form-row">
           <div class="form-group">
             <label class="form-label" for="duo_wins">Duo Wins</label>
-            <input type="number" id="duo_wins" name="duo_wins" class="form-control" min="0"
+            <input type="number" id="duo_wins" name="duo_wins" class="form-control" min="0" 
               value="<?=(int)($edit_player['duo_wins'] ?? 0)?>">
           </div>
           <div class="form-group">
@@ -225,13 +237,26 @@ else: ?>
 
         <div class="form-row">
           <div class="form-group">
+            <label class="form-label" for="duo_played">Duo Played</label>
+            <input type="number" id="duo_played" name="duo_played" class="form-control" min="0"
+              value="<?=(int)($edit_player['duo_played'] ?? 0)?>">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="trio_played">Trio Played</label>
+            <input type="number" id="trio_played" name="trio_played" class="form-control" min="0"
+              value="<?=(int)($edit_player['trio_played'] ?? 0)?>">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
             <label class="form-label">Total Wins (Calculated)</label>
             <input type="text" class="form-control" readOnly disabled
               value="<?=(int)($edit_player['total_wins'] ?? 0)?>">
           </div>
           <div class="form-group">
-            <label class="form-label" for="total_games">Total Games Played</label>
-            <input type="number" id="total_games" name="total_games" class="form-control" min="0"
+            <label class="form-label">Total Games (Calculated)</label>
+            <input type="text" class="form-control" readOnly disabled
               value="<?=(int)($edit_player['total_games'] ?? 0)?>">
           </div>
         </div>

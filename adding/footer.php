@@ -14,11 +14,11 @@
       Join our Discord
     </a>
 
-    <a href="#">
+    <a href="https://blocknet.online/" target="_blank">
       <div class="block-app-logo"
         style="display:flex; flex-direction:row; align-items:center; justify-content:center; gap:10px; margin-bottom: 16px;">
         <img style=" display:inline-block;width: 30px;" src="permanent_medias/Block.png" alt="block app">
-        <span style="display: inline-block"><small><b>Join Block</b></small></span>
+        <span style="display: inline-block"><small><b>Join BLOCKNET</b></small></span>
       </div>
     </a>
 
